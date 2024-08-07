@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morat Gye Party</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .responses {
+            margin-top: 20px;
+        }
+        .response {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Morat Gye Party</h1>
+    <p>Si te preguntaramos "¿A dónde vamos?", ¿cuál sería tu respuesta?</p>
+    <input type="text" id="responseInput" placeholder="Escribe tu respuesta aquí">
+    <button onclick="submitResponse()">Enviar</button>
+    <div class="responses" id="responses"></div>
+
+    <script>
+        const responses = [];
+
+        function submitResponse() {
+            const responseInput = document.getElementById('responseInput');
+            const responseText = responseInput.value.trim();
+            if (responseText) {
+                responses.push(responseText);
+                responseInput.value = '';
+                updateResponses();
+            }
+        }
+
+        function updateResponses() {
+            const responsesDiv = document.getElementById('responses');
+            responsesDiv.innerHTML = '';
+            responses.forEach(response => {
+                const responseDiv = document.createElement('div');
+                responseDiv.className = 'response';
+                responseDiv.textContent = response;
+                responsesDiv.appendChild(responseDiv);
+            });
+        }
+    </script>
+</body>
+</html>
